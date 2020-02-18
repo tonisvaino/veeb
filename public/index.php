@@ -1,2 +1,2 @@
 <?php
-echo 'whack';
+require_once '../app/bootstrap.php';

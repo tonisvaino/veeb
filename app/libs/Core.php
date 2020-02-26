@@ -29,14 +29,11 @@ class Core
         unset($url[1]);
       }
     }
+    // set up params
+    $this->params = $url ? array_values($url) : array();
 
-    echo '<pre>';
-    print_r($url);
-    echo '</pre>';
-//
-    echo '<pre>';
-    print_r($this->currentController);
-    echo '</pre>';
+    // call a callback function with array of params
+    call_user_func_array(array($this->currentController, $this->currentMethod), $this->params);
   }
 
   // get url from link and prepare for use

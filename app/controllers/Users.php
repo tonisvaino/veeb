@@ -3,6 +3,10 @@
 
 class Users extends Controller
 {
+  public function __construct(){
+    $this->userModel = $this->model('User');
+  }
+
   public function login(){
     $this->view('users/login');
   }
@@ -30,6 +34,8 @@ class Users extends Controller
       // validate email
       if(empty($data['email'])){
         $data['email_err'] = 'Please enter the email';
+      } else if($this->userModel->findUserByEmail($data['email'])){
+        $data['email_err'] = 'Email is already taken';
       }
       // validate password
       if(empty($data['pass'])){
@@ -43,10 +49,16 @@ class Users extends Controller
       } else if($data['pass'] != $data['pass2']){
         $data['pass2_err'] = 'Passwords do not match';
       }
-      echo '<pre>';
-      print_r($data);
-      echo '</pre>';
-      $this->view('users/register', $data);
+      // if errors are empty - register user
+      if(empty($data['name_err']) and empty($data['email_err']) and empty($data['pass_err']) and empty($data['pass2_err'])){
+        if($this->userModel->register($data)){
+          header('Location: '.URLROOT.'/users/login');
+        } else {
+           die('Sometrhing went wrong');
+        }
+      } else {
+        $this->view('users/register', $data);
+      }
     } else {
       $this->view('users/register');
     }

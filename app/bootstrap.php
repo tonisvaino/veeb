@@ -1,4 +1,5 @@
 <?php
+session_start();
 error_reporting(~E_NOTICE & ~E_WARNING);
 require_once 'config/config.php';
 

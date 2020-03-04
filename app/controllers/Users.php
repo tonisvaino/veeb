@@ -94,7 +94,7 @@ class Users extends Controller
         if($this->userModel->register($data)){
           header('Location: '.URLROOT.'/users/login');
         } else {
-           die('Sometrhing went wrong');
+           die('Something went wrong');
         }
       } else {
         $this->view('users/register', $data);

@@ -1,3 +1,4 @@
 <?php require_once APPROOT.'/views/inc/header.php';?>
-AI KATKI
+all posts of my blog
 <?php require_once APPROOT.'/views/inc/footer.php';?>
+

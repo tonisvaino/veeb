@@ -1,12 +1,11 @@
 <?php
 
-//format database data
 
 class Posts extends Controller
 {
   public function __construct(){
     $this->postModel = $this->model('Post');
-    $this->postModel = $this->model('User');
+    $this->userModel = $this->model('User');
   }
   public function index(){
     if($this->postModel->getAllPosts() !== false){
@@ -58,7 +57,7 @@ class Posts extends Controller
         // load view with errors
         $this->view('posts/add', $data);
       }
-    } else {
+      } else {
       $this->view('posts/add');
     }
   }

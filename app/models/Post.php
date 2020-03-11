@@ -25,12 +25,14 @@ class Post
       return false;
     }
   }
+
   public function getPostById($id){
     $this->db->query('SELECT * FROM posts WHERE id = :id');
     $this->db->bind(':id', $id);
     $post = $this->db->getOne();
     return $post;
   }
+
   public function addPost($data){
     $this->db->query('INSERT INTO posts (title, user_id, content) VALUES (:title, :user_id, :content)');
     $this->db->bind(':title', $data['title']);
@@ -43,4 +45,5 @@ class Post
       return false;
     }
   }
+
 }

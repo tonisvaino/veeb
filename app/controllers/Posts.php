@@ -51,7 +51,7 @@ class Posts extends Controller
           flashSet('post_message', 'Post is Added');
           redirect('posts');
         } else {
-          die('Some went wrong');
+          die('Something went wrong');
         }
       } else {
         // load view with errors
@@ -61,4 +61,17 @@ class Posts extends Controller
       $this->view('posts/add');
     }
   }
+//edit post
+  public function edit($id){
+    $post = $this->postModel->getPostById($id);
+    if($post->user_id != $_SESSION['user_id']){
+      redirect('posts');
+    }
+    $data = array (
+      'id' => $id,
+      'title' => $post->title,
+      'content' => $post->content
+    );
+    $this->view("posts/edit", $data);
+}
 }

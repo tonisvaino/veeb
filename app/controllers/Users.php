@@ -95,7 +95,7 @@ class Users extends Controller
           flashSet('register_success', 'You are registered and can log in', 'alert alert-info');
           redirect('users/login');
         } else {
-           die('Sometrhing went wrong');
+           die('Something went wrong');
         }
       } else {
         $this->view('users/register', $data);

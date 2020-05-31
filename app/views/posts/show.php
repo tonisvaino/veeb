@@ -2,7 +2,8 @@
 <a href="<?php echo URLROOT?>/posts" class="btn btn-light">Back</a>
 <h1><?php echo $data['post']->title; ?></h1>
 <div class="bg-secondary text-white p-2 mb-3">
-  Written by <?php echo $data['user']->name;?> on <?php echo $data['post']->created_at;?>
+  Written by <?php echo $data['user']->name;?> on <?php echo $data['post']->created_at;?> <a
+      href="http://localhost/veeb/tags/show/2">html</a>
 </div>
 <?php if($data['post']->user_id == $_SESSION['user_id']) :?>
   <div class="row justify-content-around">

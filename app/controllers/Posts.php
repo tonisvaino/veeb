@@ -1,11 +1,10 @@
 <?php
-
-
 class Posts extends Controller
 {
   public function __construct(){
     $this->postModel = $this->model('Post');
     $this->userModel = $this->model('User');
+    $this->tagModel = $this->model('Tag');
   }
   public function index(){
     if($this->postModel->getAllPosts() !== false){
@@ -19,7 +18,7 @@ class Posts extends Controller
     $user = $this->userModel->getUserById($post->user_id);
     $data = array(
       'post' => $post,
-      'user' => $user
+      'user' => $user,
     );
     $this->view('posts/show', $data);
   }

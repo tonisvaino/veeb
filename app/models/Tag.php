@@ -40,4 +40,15 @@ class Tag
       return false;
     }
   }
+
+  public function getAllTagGroups($id) {
+    $this->db->query('SELECT tag_id FROM post_tags WHERE post_tags.post_id = posts.id');
+    $this->db->bind(':id', $id);
+    $tagGroup = $this->db->getAll();
+    if ($this->db->rowCount() > 0) {
+      return $tagGroup;
+    } else {
+      return false;
+    }
+  }
 }

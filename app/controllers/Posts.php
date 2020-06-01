@@ -16,9 +16,11 @@ class Posts extends Controller
   public function show($id){
     $post = $this->postModel->getPostById($id);
     $user = $this->userModel->getUserById($post->user_id);
+    $tag = $this->tagModel->getTagById($post->id);
     $data = array(
       'post' => $post,
       'user' => $user,
+      'tags' => $tag,
     );
     $this->view('posts/show', $data);
   }
